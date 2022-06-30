@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Showcase-React-Bootstrap/static/css/main.9df34016.css",
+    "main.js": "/Showcase-React-Bootstrap/static/js/main.5e2e64d8.js",
+    "index.html": "/Showcase-React-Bootstrap/index.html",
+    "main.9df34016.css.map": "/Showcase-React-Bootstrap/static/css/main.9df34016.css.map",
+    "main.5e2e64d8.js.map": "/Showcase-React-Bootstrap/static/js/main.5e2e64d8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9df34016.css",
+    "static/js/main.5e2e64d8.js"
+  ]
+}
