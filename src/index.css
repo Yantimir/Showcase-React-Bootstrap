@@ -4,6 +4,16 @@
     min-height: calc(100vh - 126px);
 }
 
+.card-title {
+    color: #3a3a3a;
+}
+
+.card-text {
+    color: #747474;
+    font-weight: 400;
+    font-size: 16px;
+}
+
 .cart__wrapper {
     display: inline-block;
 

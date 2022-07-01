@@ -10,11 +10,16 @@ export const Cart = (props) => {
         <div>
           <Icon28ShoppingCartOutline width={30} height={30} fill="#ffffff" />
         </div>
-        <div style={{ fontSize: "16px", fontWeight: "500", marginLeft: "2px" }}>
+        <div style={{
+          fontSize: "16px",
+          fontWeight: "500",
+          marginLeft: "5px",
+          marginRight: "5px"
+        }}
+        >
           {quantity ? <span>{quantity}</span> : null}
         </div>
       </div>
     </div>
-
   )
 }

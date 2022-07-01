@@ -9,7 +9,8 @@ export const GoodsItem = (props) => {
         full_background,
         // icon,
         // image,
-        addToBasket = Function.prototype
+        addToBasket = Function.prototype,
+        // handleClickCart
     } = props;
 
     return (
@@ -19,7 +20,7 @@ export const GoodsItem = (props) => {
                 width: '15rem',
                 margin: "1rem auto 1rem auto",
             }}
-                className="slide-content"
+            // className="slide-content"
             >
                 <Card.Img variant="top" src={full_background} />
                 <Card.Body style={{
@@ -40,12 +41,16 @@ export const GoodsItem = (props) => {
                     }}
                     >
                         <Button
+                            style={{ fontWeight: "500" }}
                             variant="primary"
-                            onClick={() => addToBasket({
-                                id,
-                                name,
-                                price
-                            })}
+                            onClick={() => {
+                                addToBasket({
+                                    id,
+                                    name,
+                                    price
+                                });
+                                // handleClickCart();
+                            }}
                         >В корзину
                         </Button>
                         <Card.Title>

@@ -7,65 +7,71 @@ import ThemeProvider from 'react-bootstrap/ThemeProvider';
 import { Header } from "./components/Header/Header";
 import { Shop } from "./components/Shop/Shop";
 import Footer from "./components/Footer/Footer";
+import Toast from "./components/Toast/Toast";
 
 function App() {
 
-    const [goods, setGoods] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [order, setOrder] = useState([])
-    
-    useEffect(() => {
-        setLoading(true);
-        api.getGoodsList()
-            .then((data) => {
-                data.featured && setGoods(data.featured);
-            })
-            .catch(err => console.log(err))
-            .finally(() => {
-                setLoading(false);
-            })
-        // eslint-disable-next-line
-    }, []);
+  const [goods, setGoods] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [order, setOrder] = useState([]);
+  const [show, setShow] = useState(false);
 
-    const addToBasket = (item) => {
-        const itemIndex = order.findIndex(oderItem => oderItem.id === item.id);
-        if (itemIndex < 0) {
-            const newItem = {
-                ...item,
-                quantity: 1
-            }
-            setOrder([...order, newItem])
+  useEffect(() => {
+    setLoading(true);
+    api.getGoodsList()
+      .then((data) => {
+        data.featured && setGoods(data.featured);
+      })
+      .catch(err => console.log(err))
+      .finally(() => {
+        setLoading(false);
+      })
+    // eslint-disable-next-line
+  }, []);
+
+  const addToBasket = (item) => {
+    const itemIndex = order.findIndex(oderItem => oderItem.id === item.id);
+    if (itemIndex < 0) {
+      const newItem = {
+        ...item,
+        quantity: 1
+      }
+      setOrder([...order, newItem]);
+    } else {
+      const newOrder = order.map((orderItem, index) => {
+        if (index === itemIndex) {
+          return {
+            ...orderItem,
+            quantity: orderItem.quantity + 1
+          }
         } else {
-            const newOrder = order.map((orderItem, index) => {
-                if(index === itemIndex){
-                    return {
-                        ...orderItem,
-                        quantity: orderItem.quantity + 1
-                    }
-                } else {
-                    return orderItem;
-                }
-            });
-            setOrder(newOrder);
+          return orderItem;
         }
-    };
+      });
+      setOrder(newOrder);
+      
+    }
+    setShow(true);
+  };
 
-    return (
-        <ThemeProvider
-            breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
-        >
-            <Header />
-            <div className="content">
-                <Shop
-                    goods={goods}
-                    loading={loading}
-                    order={order}
-                    addToBasket={addToBasket}
-                />
-            </div>
-            <Footer />
-        </ThemeProvider>
-    );
+  return (
+    <ThemeProvider
+      breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
+    >
+      <Header />
+      <div className="content">
+        <Shop
+          goods={goods}
+          loading={loading}
+          order={order}
+          addToBasket={addToBasket}
+        // handleClickCart={handleClickCart}
+        />
+      </div>
+      <Footer />
+      {show && <Toast show={show} setShow={setShow}/>}
+    </ThemeProvider>
+  );
 }
 
 export default App;
