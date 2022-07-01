@@ -1,3 +1,5 @@
+/* @import-normalize; */
+
 .content {
     min-height: calc(100vh - 126px);
 }
