@@ -1,25 +1,19 @@
 import { Navbar, Container } from "react-bootstrap";
+import { Cart } from "../Cart/Cart";
 
-export const Header = () => {
+export const Header = ({ order }) => {
+
     return (
         <>
-            <Navbar 
-            collapseOnSelect 
-            bg="dark" 
-            variant="dark" 
-            expand="lg"
-            sticky="top"
+            <Navbar
+                bg="dark"
+                variant="dark"
+                expand="lg"
+                sticky="top"
             >
                 <Container>
                     <Navbar.Brand href="#">Showcase-React-Bootstrap</Navbar.Brand>
-                    {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="mr-auto">
-                            <Nav.Link href="#">Home</Nav.Link>
-                            <Nav.Link href="#">Link</Nav.Link>
-                            <Nav.Link href="#">About</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse> */}
+                    <Cart quantity={order.length} />
                 </Container>
             </Navbar>
         </>

@@ -10,7 +10,6 @@ export const GoodsItem = (props) => {
         // icon,
         // image,
         addToBasket = Function.prototype,
-        // handleClickCart
     } = props;
 
     return (
@@ -20,7 +19,6 @@ export const GoodsItem = (props) => {
                 width: '15rem',
                 margin: "1rem auto 1rem auto",
             }}
-            // className="slide-content"
             >
                 <Card.Img variant="top" src={full_background} />
                 <Card.Body style={{
@@ -42,14 +40,13 @@ export const GoodsItem = (props) => {
                     >
                         <Button
                             style={{ fontWeight: "500" }}
-                            variant="primary"
+                            variant="dark"
                             onClick={() => {
                                 addToBasket({
                                     id,
                                     name,
                                     price
                                 });
-                                // handleClickCart();
                             }}
                         >В корзину
                         </Button>

@@ -7,7 +7,6 @@ export const Shop = ({
     loading, 
     order,
     addToBasket = Function.prototype,
-    handleClickCart
 }) => {
     return (
         <>
@@ -18,7 +17,6 @@ export const Shop = ({
                     goods={goods}
                     order={order}
                     addToBasket={addToBasket}
-                    handleClickCart={handleClickCart}
                 />
             }
         </>

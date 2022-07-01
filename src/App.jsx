@@ -1,20 +1,21 @@
 import { useState, useEffect } from "react";
 import api from "./components/utils/Api";
 
+import toast from "react-hot-toast";
+import { Toaster } from "react-hot-toast"; /* https://react-hot-toast.com/ */
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ThemeProvider from 'react-bootstrap/ThemeProvider';
 
 import { Header } from "./components/Header/Header";
 import { Shop } from "./components/Shop/Shop";
 import Footer from "./components/Footer/Footer";
-import Toast from "./components/Toast/Toast";
 
 function App() {
 
   const [goods, setGoods] = useState([]);
   const [loading, setLoading] = useState(false);
   const [order, setOrder] = useState([]);
-  const [show, setShow] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -49,27 +50,28 @@ function App() {
         }
       });
       setOrder(newOrder);
-      
+
     }
-    setShow(true);
+    toast.success('Товар добавлен в корзину', {
+      position: "bottom-center"
+    })
   };
 
   return (
     <ThemeProvider
       breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
     >
-      <Header />
+      <Header order={order}/>
       <div className="content">
         <Shop
           goods={goods}
           loading={loading}
           order={order}
           addToBasket={addToBasket}
-        // handleClickCart={handleClickCart}
         />
       </div>
       <Footer />
-      {show && <Toast show={show} setShow={setShow}/>}
+      <Toaster />
     </ThemeProvider>
   );
 }

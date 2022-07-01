@@ -5,21 +5,22 @@ export const Cart = (props) => {
   const { quantity = 0 } = props;
 
   return (
-    <div className="cart__wrapper">
-      <div className="cart__item">
-        <div>
+      <div className="cart">
+        <div style={{marginRight: "3px"}}>
           <Icon28ShoppingCartOutline width={30} height={30} fill="#ffffff" />
         </div>
-        <div style={{
-          fontSize: "16px",
-          fontWeight: "500",
-          marginLeft: "5px",
-          marginRight: "5px"
-        }}
-        >
-          {quantity ? <span>{quantity}</span> : null}
-        </div>
+        {quantity
+          ? <div style={{
+            fontSize: "16px",
+            fontWeight: "500",
+            marginLeft: "2px",
+            marginRight: "5px"
+          }}
+          >
+            {quantity}
+          </div>
+          : null
+        }
       </div>
-    </div>
   )
 }
