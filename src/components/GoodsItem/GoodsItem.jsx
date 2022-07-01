@@ -2,20 +2,21 @@ import { Card, Button, Col } from 'react-bootstrap';
 
 export const GoodsItem = (props) => {
     const {
-        // id,
+        id,
         name,
         description,
         price,
         full_background,
         // icon,
-        // image
+        // image,
+        addToBasket = Function.prototype
     } = props;
 
     return (
         <Col>
             <Card style={{
                 height: "30rem",
-                width: '18rem',
+                width: '15rem',
                 margin: "1rem auto 1rem auto",
             }}
                 className="slide-content"
@@ -38,7 +39,15 @@ export const GoodsItem = (props) => {
                         marginBottom: "5px"
                     }}
                     >
-                        <Button variant="primary">В корзину</Button>
+                        <Button
+                            variant="primary"
+                            onClick={() => addToBasket({
+                                id,
+                                name,
+                                price
+                            })}
+                        >В корзину
+                        </Button>
                         <Card.Title>
                             {`${price} ₽`}
                         </Card.Title>

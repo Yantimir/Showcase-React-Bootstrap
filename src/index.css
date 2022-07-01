@@ -6,6 +6,11 @@
 
 .cart__wrapper {
     display: inline-block;
+
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 5;
 }
 
 .cart__item {
@@ -17,4 +22,11 @@
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+@media(min-width: 767px){
+    .cart__wrapper{
+        top: 5rem;
+        bottom: unset;
+    }
 }

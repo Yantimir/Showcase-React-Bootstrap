@@ -16,9 +16,7 @@ import { Cart } from "../Cart/Cart";
 // import 'swiper/css/pagination';
 // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade])
 
-export const GoodsList = (props) => {
-
-    const { goods = [] } = props;
+export const GoodsList = ({ goods, order, addToBasket = Function.prototype }) => {
 
     return (
         <Container style={{
@@ -26,7 +24,7 @@ export const GoodsList = (props) => {
             paddingBottom: "1rem",
         }}
         >
-            <Cart />
+            <Cart quantity={order.length} />
             {goods.length
                 // ? <Swiper
                 //     effect="fade"
@@ -41,19 +39,16 @@ export const GoodsList = (props) => {
                 //     onSwiper={(swiper) => console.log(swiper)}
                 // >
                 ? <Row>
-                    {
-                        goods.map(item => (
-                            // <SwiperSlide key={item.id} className="slide">
-                            <GoodsItem key={item.id} {...item} />
-                            // </SwiperSlide>
-                        ))
-                    }
+                    {goods.map(item => (
+                        // <SwiperSlide key={item.id} className="slide">
+                        <GoodsItem key={item.id} {...item} addToBasket={addToBasket} />
+                        // </SwiperSlide>
+                    ))}
                 </Row>
 
                 // </Swiper>
                 : <h3>Nothing here</h3>
             }
         </Container >
-
     )
 }
