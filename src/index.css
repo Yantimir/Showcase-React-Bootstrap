@@ -1,3 +1,18 @@
 .content {
     min-height: calc(100vh - 126px);
 }
+
+.cart__wrapper {
+    display: inline-block;
+}
+
+.cart__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}

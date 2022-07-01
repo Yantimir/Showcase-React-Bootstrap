@@ -5,10 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ThemeProvider from 'react-bootstrap/ThemeProvider';
 
 import { Header } from "./components/Header/Header";
-import { Slider } from "./components/Slider/Slider";
+// import { Slider } from "./components/Slider/Slider";
 import { Shop } from "./components/Shop/Shop";
 import Footer from "./components/Footer/Footer";
-
 
 
 function App() {
@@ -33,9 +32,9 @@ function App() {
         <ThemeProvider
             breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
         >
-            <Header />
+            <Header/>
             <div className="content">
-                <Slider goods={goods} />
+                {/* <Slider goods={goods} /> */}
                 <Shop goods={goods} loading={loading} />
             </div>
             <Footer />

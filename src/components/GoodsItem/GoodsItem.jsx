@@ -13,20 +13,22 @@ export const GoodsItem = (props) => {
 
     return (
         <Col>
-            <Card style={{ width: '18rem', marginBottom: "2rem", margin: "0 auto" }}>
+            <Card style={{ width: '18rem', margin: "1rem auto 1rem auto" }}>
                 <Card.Img variant="top" src={full_background} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>
                         {description}
                     </Card.Text>
-                    <Card.Text>
-                        {`Цена: ${price} рублей`}
-                    </Card.Text>
-                    <Button variant="primary" size="sm">Купить</Button>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                        <Button variant="primary">В корзину</Button>
+                        <Card.Title>
+                            {`${price} ₽`}
+                        </Card.Title>
+                    </div>
                 </Card.Body>
             </Card>
-        </Col>
+        </Col >
 
     )
 }

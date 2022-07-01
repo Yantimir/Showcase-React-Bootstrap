@@ -1,12 +1,14 @@
 import { GoodsItem } from "../GoodsItem/GoodsItem";
 import { Container, Row } from "react-bootstrap";
+import  {Cart} from "../Cart/Cart";
 
 export const GoodsList = (props) => {
 
     const { goods = [] } = props;
 
     return (
-        <Container style={{ paddingTop: "2rem", paddingBottom: "2rem"}}>
+        <Container style={{ paddingTop: "1rem", paddingBottom: "1rem"}}>
+            <Cart/>
             {goods.length
                 ? <Row>
                     {goods.map(item => (
