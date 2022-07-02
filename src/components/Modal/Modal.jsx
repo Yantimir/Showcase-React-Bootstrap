@@ -5,7 +5,7 @@ import "./style.css";
 
 const _Modal = ({ order, title, showModal, haldleClickOpenModal }) => {
 
-    console.log(order)
+    // console.log(order)
 
     return (
         <Modal

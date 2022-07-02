@@ -1,7 +1,11 @@
 import { GoodsItem } from "../GoodsItem/GoodsItem";
 import { Container, Row } from "react-bootstrap";
 
-export const GoodsList = ({ goods, addToBasket = Function.prototype }) => {
+export const GoodsList = ({ 
+    goods, 
+    addToBasket = Function.prototype,
+    addToFavorite = Function.prototype
+ }) => {
 
     return (
         <Container style={{
@@ -16,6 +20,7 @@ export const GoodsList = ({ goods, addToBasket = Function.prototype }) => {
                             key={item.id}
                             {...item}
                             addToBasket={addToBasket}
+                            addToFavorite={addToFavorite}
                         />
                     ))}
                 </Row>

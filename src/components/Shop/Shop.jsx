@@ -7,6 +7,7 @@ export const Shop = ({
     loading, 
     order,
     addToBasket = Function.prototype,
+    addToFavorite = Function.prototype
 }) => {
     return (
         <>
@@ -17,6 +18,7 @@ export const Shop = ({
                     goods={goods}
                     order={order}
                     addToBasket={addToBasket}
+                    addToFavorite={addToFavorite}
                 />
             }
         </>

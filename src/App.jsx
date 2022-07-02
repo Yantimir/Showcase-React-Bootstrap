@@ -18,8 +18,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [order, setOrder] = useState([]);
   const [showModal, setShowModal] = useState(false);
-
-
+  const [favoritesCards, setFavoritesCards] = useState([]);
+  console.log(favoritesCards)
   useEffect(() => {
     setLoading(true);
     api.getGoodsList()
@@ -55,18 +55,53 @@ function App() {
       setOrder(newOrder);
 
     }
-    toast.success('Товар добавлен в корзину')
-    // toast('Товар добавлен в корзину',
-    //   {
-    //     icon: '✅',
-    //     style: {
-    //       borderRadius: '20px',
-    //       background: '#ffffff',
-    //       color: '#000000',
-    //     },
-    //   }
-    // );
+    // toast.success('Товар добавлен в корзину')
+    toast('Товар добавлен в корзину',
+      {
+        icon: '🆕',
+        style: {
+          borderRadius: '20px',
+          background: '#ffffff',
+          color: '#000000',
+        },
+      }
+    );
   };
+
+  const addToFavorite = (item) => {
+    const like = favoritesCards.some(favoritesItem => favoritesItem.like === item.id)
+    if (!like) {
+      const newItem = {
+        ...item,
+        like: item.id
+      }
+      setFavoritesCards([...favoritesCards, newItem]);
+      toast("Товар добавлен в избранные",
+        {
+          icon: '❤️',
+          style: {
+            borderRadius: '20px',
+            background: '#ffffff',
+            color: '#000000',
+          },
+        }
+      );
+    } else {
+      setFavoritesCards(prevState => {
+        return prevState.filter(prev => prev.like !== item.id)
+      });
+      toast("Товар удален из избранных",
+        {
+          icon: '⛔',
+          style: {
+            borderRadius: '20px',
+            background: '#ffffff',
+            color: '#000000',
+          },
+        }
+      );
+    }
+  }
 
   const haldleClickOpenModal = () => {
     setShowModal(!showModal);
@@ -77,13 +112,18 @@ function App() {
     <ThemeProvider
       breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
     >
-      <Header order={order} haldleClickOpenModal={haldleClickOpenModal} />
+      <Header 
+      favoritesCards={favoritesCards}
+      order={order} 
+      haldleClickOpenModal={haldleClickOpenModal} 
+      />
       <div className="content">
         <Shop
           goods={goods}
           loading={loading}
           order={order}
           addToBasket={addToBasket}
+          addToFavorite={addToFavorite}
         />
       </div>
       <Footer />

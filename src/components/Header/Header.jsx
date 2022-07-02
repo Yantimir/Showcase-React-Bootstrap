@@ -3,8 +3,7 @@ import { Cart } from "../Cart/Cart";
 import { Favorite } from "../Favorite/Favorite";
 import "./style.css";
 
-export const Header = ({ order, haldleClickOpenModal }) => {
-
+export const Header = ({ favoritesCards, order, haldleClickOpenModal }) => {
     return (
         <>
             <Navbar
@@ -17,10 +16,10 @@ export const Header = ({ order, haldleClickOpenModal }) => {
                     <Navbar.Brand href="#"><div>Showcase</div></Navbar.Brand>
                     <div className="container__inner">
                         <div className="container__favorite">
-                            <Favorite color="#57bee6"/>
+                            <Favorite value={favoritesCards}/>
                         </div>
                         <div className="container__cart" onClick={haldleClickOpenModal}>
-                            <Cart quantity={order.length} />
+                            <Cart quantity={order?.length} />
                         </div>
                     </div>
                 </Container>
