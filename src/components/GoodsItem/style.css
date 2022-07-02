@@ -1,0 +1,40 @@
+.card__favorite {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #464646;
+    font-size: 14px;
+}
+
+.card-text {
+    color: #747474;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.btn {
+    font-weight: 500;
+    border-radius: 10px;
+    color: #ffffff;
+    background: #57bee6;
+    border: 1px solid #57bee6;
+
+}
+
+.btn:hover {
+    background: #1da9e0;
+    border: 1px solid #1da9e0;
+}

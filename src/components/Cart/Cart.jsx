@@ -1,4 +1,5 @@
 import { Icon28ShoppingCartOutline } from '@vkontakte/icons';
+import "./style.css";
 
 export const Cart = (props) => {
 
@@ -6,17 +7,11 @@ export const Cart = (props) => {
 
   return (
       <div className="cart">
-        <div style={{marginRight: "3px"}}>
-          <Icon28ShoppingCartOutline width={30} height={30} fill="#ffffff" />
+        <div className="cart__inner">
+          <Icon28ShoppingCartOutline width={30} height={30} fill="#57bee6" />
         </div>
         {quantity
-          ? <div style={{
-            fontSize: "16px",
-            fontWeight: "500",
-            marginLeft: "2px",
-            marginRight: "5px"
-          }}
-          >
+          ? <div className="cart__quantity">
             {quantity}
           </div>
           : null

@@ -10,12 +10,15 @@ import ThemeProvider from 'react-bootstrap/ThemeProvider';
 import { Header } from "./components/Header/Header";
 import { Shop } from "./components/Shop/Shop";
 import Footer from "./components/Footer/Footer";
+import Modal from "./components/Modal/Modal";
 
 function App() {
 
   const [goods, setGoods] = useState([]);
   const [loading, setLoading] = useState(false);
   const [order, setOrder] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
 
   useEffect(() => {
     setLoading(true);
@@ -52,16 +55,29 @@ function App() {
       setOrder(newOrder);
 
     }
-    toast.success('Товар добавлен в корзину', {
-      position: "bottom-center"
-    })
+    toast.success('Товар добавлен в корзину')
+    // toast('Товар добавлен в корзину',
+    //   {
+    //     icon: '✅',
+    //     style: {
+    //       borderRadius: '20px',
+    //       background: '#ffffff',
+    //       color: '#000000',
+    //     },
+    //   }
+    // );
   };
+
+  const haldleClickOpenModal = () => {
+    setShowModal(!showModal);
+  }
+
 
   return (
     <ThemeProvider
       breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
     >
-      <Header order={order}/>
+      <Header order={order} haldleClickOpenModal={haldleClickOpenModal} />
       <div className="content">
         <Shop
           goods={goods}
@@ -72,6 +88,12 @@ function App() {
       </div>
       <Footer />
       <Toaster />
+      <Modal
+        order={order}
+        showModal={showModal}
+        haldleClickOpenModal={haldleClickOpenModal}
+        title="Корзина"
+      />
     </ThemeProvider>
   );
 }

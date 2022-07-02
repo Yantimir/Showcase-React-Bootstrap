@@ -1,0 +1,11 @@
+.navbar div {
+    color: #57bee6;
+}
+.container__inner {
+    display: flex;
+    align-items: center;
+}
+
+.container__favorite {
+   padding-right: 10px;
+}

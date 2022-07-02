@@ -4,31 +4,6 @@
     min-height: calc(100vh - 126px);
 }
 
-.card-title {
-    color: #3a3a3a;
-}
 
-.card-text {
-    color: #747474;
-    font-weight: 400;
-    font-size: 16px;
-}
 
-.cart {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    padding: 2px;
-    border: 2px solid #ffffff;
-    border-radius: 5px;
-    cursor: pointer;
-}
 
-@media(min-width: 767px){
-    .cart__wrapper{
-        top: 5rem;
-        /* bottom: unset; */
-        right: 2rem;
-    }
-}

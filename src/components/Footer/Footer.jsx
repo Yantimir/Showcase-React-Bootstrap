@@ -4,9 +4,9 @@ const Footer = () => {
 
     return (
         <>
-            <Container fluid style={{ backgroundColor: "#212529", color: "#ffffff" }}>
+            <Container fluid style={{ backgroundColor: "#212529", color: "#57bee6" }}>
                 <Container style={{ display: "flex", justifyContent: "center", padding: "10px" }}>
-                    <p>2022</p>
+                    <h6>2022</h6>
                 </Container>
             </Container>
         </>

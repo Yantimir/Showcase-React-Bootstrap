@@ -1,4 +1,6 @@
 import { Card, Button, Col } from 'react-bootstrap';
+import { Favorite } from "../Favorite/Favorite";
+import "./style.css";
 
 export const GoodsItem = (props) => {
     const {
@@ -6,41 +8,51 @@ export const GoodsItem = (props) => {
         name,
         description,
         price,
-        full_background,
+        // full_background,
         // icon,
-        // image,
+        image,
         addToBasket = Function.prototype,
     } = props;
 
     return (
         <Col>
             <Card style={{
-                height: "30rem",
+                height: "26rem",
                 width: '15rem',
                 margin: "1rem auto 1rem auto",
+                // border: "2px solid #000000",
+                background: "rgba( 255, 255, 255, 0.25 )",
+                boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
+                backdropFilter: "blur( 1px )",
+                borderRadius: "20px",
+                border: "1px solid rgba( 255, 255, 255, 0.18 )",
+                overflow: "hidden"
             }}
             >
-                <Card.Img variant="top" src={full_background} />
+                {/* <Card.Img variant="top" src={full_background} /> */}
+                {/* <Card.Img variant="top" src={icon} /> */}
+                <Card.Img variant="top" src={image} />
                 <Card.Body style={{
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between"
                 }}
                 >
-                    <Card.Title>{name}</Card.Title>
+                    <div className="card__favorite">
+                        <Favorite color="#57bee6" />
+                    </div>
+                    <Card.Title>
+                        {name.toUpperCase()}
+                    </Card.Title>
                     <Card.Text>
                         {description}
                     </Card.Text>
-                    <div style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                        marginBottom: "5px"
-                    }}
-                    >
+                    <div className="title-wrapper">
+                        <Card.Title>
+                            {`₽ ${price} `}
+                        </Card.Title>
                         <Button
-                            style={{ fontWeight: "500" }}
-                            variant="dark"
+                            variant="outline-secondary"
                             onClick={() => {
                                 addToBasket({
                                     id,
@@ -48,11 +60,8 @@ export const GoodsItem = (props) => {
                                     price
                                 });
                             }}
-                        >В корзину
+                        >Купить
                         </Button>
-                        <Card.Title>
-                            {`${price} ₽`}
-                        </Card.Title>
                     </div>
                 </Card.Body>
             </Card>

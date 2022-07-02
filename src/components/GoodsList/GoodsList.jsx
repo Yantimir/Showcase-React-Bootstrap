@@ -10,7 +10,7 @@ export const GoodsList = ({ goods, addToBasket = Function.prototype }) => {
         }}
         >
             {goods.length
-                ? <Row>
+                ? <Row  xxl={5} xl={4} lg={3} md={2} sm={2} xs={1}className="g-4">
                     {goods.map(item => (
                         <GoodsItem
                             key={item.id}
