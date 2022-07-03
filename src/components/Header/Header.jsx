@@ -7,10 +7,8 @@ import { Favorite } from "../Favorite/Favorite";
 import { ModalCart } from "../ModalCart/ModalCart";
 import { ModalFavorites } from "../ModalFavorites/ModalFavorites";
 
-
-
 export const Header = ({ order, favoritesCards }) => {
-    console.log(favoritesCards)
+
     const [showModalCart, setShowModalCart] = useState(false);
     const [showModalFavorite, setShowModalFavorite] = useState(false);
 

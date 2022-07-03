@@ -15,7 +15,7 @@ export const Favorite = (props) => {
                 </div>
                 {favoritesCount
                     ? <div className="favorite__favoritesCount">
-                        {favoritesCount}
+                        <h6>{favoritesCount}</h6>
                     </div>
                     : null
                 }

@@ -14,7 +14,7 @@ export const Cart = (props) => {
         </div>
         {cartCount
           ? <div className="cart__quantity">
-            {cartCount}
+            <h6>{cartCount}</h6>
           </div>
           : null
         }

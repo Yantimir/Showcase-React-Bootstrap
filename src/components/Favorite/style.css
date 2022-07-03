@@ -1,17 +1,20 @@
 .favorite {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #57bee6;
     cursor: pointer;
+    position: relative;
+    margin-right: 5px;
 }
 
-.favorite__inner {
-    margin-right: 3px;
-}
-
-.favorite__favoritesCount { 
-    font-size: 16px;
+.favorite__favoritesCount h6 {
+    position: absolute;
+    top: -6px;
+    right: -12px;
+	padding: 2px 4px;
+	font-weight: 800;
+	font-size: 0.8rem;
+	line-height: 10px;
+    border: 3px solid #212529;
+	border-radius: 20px;
+    background-color: red;
     font-weight: 500;
-    margin: 0 5px 0 2px;
+    color: #ffffff;
 }
