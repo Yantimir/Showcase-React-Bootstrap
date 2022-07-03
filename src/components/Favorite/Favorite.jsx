@@ -1,21 +1,25 @@
-import { Icon28FavoriteOutline } from '@vkontakte/icons';
+// import { Icon28FavoriteOutline } from '@vkontakte/icons';
+import { Icon24HealthOutline } from '@vkontakte/icons';
 import "./style.css";
+// import Modal from "../Modal/Modal";
 
-export const Favorite = ({ favoritesCards }) => {
+export const Favorite = (props) => {
 
-    console.log(favoritesCards?.lenght);
+    const { favoritesCount = 0 } = props;
+
     return (
-        <div>
+        <>
             <div className="favorite">
-                <Icon28FavoriteOutline width={25} height={25} fill="#57bee6" />
-            </div>
-            {/* {value
-                ? <div>
-                    {value}
+                <div className="favorite__inner">
+                    <Icon24HealthOutline width={30} height={30} fill="#57bee6" />
                 </div>
-                : null
-            } */}
-        </div>
-
+                {favoritesCount
+                    ? <div className="favorite__favoritesCount">
+                        {favoritesCount}
+                    </div>
+                    : null
+                }
+            </div>
+        </>
     )
 }

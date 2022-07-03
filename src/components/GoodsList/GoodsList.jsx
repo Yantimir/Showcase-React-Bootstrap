@@ -3,6 +3,7 @@ import { Container, Row } from "react-bootstrap";
 
 export const GoodsList = ({ 
     goods, 
+    favoritesCards,
     addToBasket = Function.prototype,
     addToFavorite = Function.prototype
  }) => {
@@ -14,11 +15,12 @@ export const GoodsList = ({
         }}
         >
             {goods.length
-                ? <Row  xxl={5} xl={4} lg={3} md={2} sm={2} xs={1}className="g-4">
+                ? <Row  xxl={5} xl={4} lg={3} md={2} sm={2} xs={1} className="g-1">
                     {goods.map(item => (
                         <GoodsItem
                             key={item.id}
                             {...item}
+                            favoritesCards={favoritesCards}
                             addToBasket={addToBasket}
                             addToFavorite={addToFavorite}
                         />

@@ -1,6 +1,6 @@
 import { Card, Button, Col } from 'react-bootstrap';
-import { Favorite } from "../Favorite/Favorite";
 import "./style.css";
+import { FavoriteCard } from '../FavoriteCard/FavoriteCard';
 
 export const GoodsItem = (props) => {
     const {
@@ -9,25 +9,27 @@ export const GoodsItem = (props) => {
         description,
         price,
         // full_background,
-        // icon,
+        icon,
         image,
         addToBasket = Function.prototype,
-        addToFavorite = Function.prototype
+        addToFavorite = Function.prototype,
+        favoritesCards
     } = props;
 
     return (
         <Col>
             <Card>
-                <Card.Img variant="top" src={image} />
+                <Card.Img variant="top" src={image} alt={name} />
                 <Card.Body>
                     <div className="card__favorite" onClick={() => {
                         addToFavorite({
                             id,
                             name,
-                            price
+                            price,
+                            icon
                         });
                     }}>
-                        <Favorite color="#57bee6" />
+                        <FavoriteCard id={id} favoritesCards={favoritesCards}/>
                     </div>
                     <Card.Title>
                         {name.toUpperCase()}
@@ -45,7 +47,8 @@ export const GoodsItem = (props) => {
                                 addToBasket({
                                     id,
                                     name,
-                                    price
+                                    price,
+                                    icon
                                 });
                             }}
                         >Купить

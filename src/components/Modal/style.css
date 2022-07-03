@@ -1,3 +1,7 @@
+.modal {
+    pointer-events: all;
+}
+
 .modal-title h6{
     font-size: 1.2rem;
 }
@@ -17,8 +21,9 @@
 }
 
 .modal-error h5 {
-    margin: 15px 0 35px 0;
+    margin: 15px 0 25px 0;
     font-size: 1rem;
     color: #464646;
 }
+
 

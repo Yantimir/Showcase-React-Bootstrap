@@ -3,20 +3,26 @@ import { Icon32ErrorCircle } from '@vkontakte/icons';
 import { Icon24DeleteOutline } from '@vkontakte/icons';
 import "./style.css";
 
-const _Modal = ({ order, title, showModal, haldleClickOpenModal }) => {
+const _Modal = (props) => {
 
-    // console.log(order)
-
+    const {
+        order,
+        title,
+        text,
+        textButton,
+        show,
+        handleClick = Function.prototype
+    } = props;
+// console.log(props)
     return (
         <Modal
-            // centered
-            size="sm"
-            show={showModal}
-            onHide={haldleClickOpenModal}
-            aria-labelledby="example-modal-sizes-title-sm"
+            size="lg"
+            show={show}
+            onHide={handleClick}
+            aria-labelledby="example-modal-sizes-title-lg"
         >
             <Modal.Header closeButton>
-                <Modal.Title id="example-modal-sizes-title-sm">
+                <Modal.Title id="example-modal-sizes-title-lg">
                     <h6>{title}</h6>
                 </Modal.Title>
             </Modal.Header>
@@ -25,31 +31,44 @@ const _Modal = ({ order, title, showModal, haldleClickOpenModal }) => {
                     ? order.map(item => (
                         <div key={item.id}>
                             <div className="modal-body-name">
-                                <h6>
-                                    {item.name.toUpperCase()}
-                                </h6>
+                                <div style={{ display: "flex" }}>
+                                    <img
+                                        src={item.icon}
+                                        alt={item.name}
+                                        style={{
+                                            width: "100px",
+                                            height: "100px",
+                                            marginRight: "20px"
+                                        }}
+                                    />
+                                    <div>
+                                        <h6>
+                                            {item.name.toUpperCase()}
+                                        </h6>
+                                        <h6 style={{ fontWeight: "400", fontSize: "1rem", color: "#747474" }}>
+                                            Цена: {item.price} ₽
+                                        </h6>
+                                        <h6 style={{ fontSize: "0.8rem", color: "#464646" }}>
+                                            Количество: {item.cartCount}
+                                        </h6>
+                                    </div>
+                                </div>
+
                                 <Icon24DeleteOutline width={20} height={20} fill="57bee6" />
                             </div>
-
-                            <h6 style={{ fontWeight: "400", fontSize: "1rem", color: "#747474" }}>
-                                Цена: {item.price} ₽
-                            </h6>
-                            <h6 style={{ fontSize: "0.8rem", color: "#464646" }}>
-                                Количество: {item.quantity}
-                            </h6>
                             <hr />
                         </div>
                     ))
                     : <div className="modal-error">
                         <Icon32ErrorCircle width={30} height={30} fill="#57bee6" />
                         <h5>
-                            Ваша корзина пуста
+                            {text}
                         </h5>
                         <Button
-                            style={{ fontWeight: "500", borderRadius: "10px" }}
+                            style={{ fontWeight: "500", borderRadius: "10px", marginBottom: "15px" }}
                             variant="outline-secondary"
-                            onClick={haldleClickOpenModal}
-                        >Перейти в каталог
+                            onClick={handleClick}
+                        >{textButton}
                         </Button>
                     </div>
                 }

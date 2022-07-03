@@ -1,22 +1,23 @@
 import { Preloader } from "../Preloader/Preloader";
 import { GoodsList } from "../GoodsList/GoodsList";
-// import {Cart} from "../Cart/Cart";
 
 export const Shop = ({
     goods = [],
     loading, 
     order,
+    favoritesCards,
     addToBasket = Function.prototype,
     addToFavorite = Function.prototype
 }) => {
+
     return (
         <>
-            {/* <Cart quantity={goods.length}/> */}
             {loading
                 ? <Preloader />
                 : <GoodsList
                     goods={goods}
                     order={order}
+                    favoritesCards={favoritesCards}
                     addToBasket={addToBasket}
                     addToFavorite={addToFavorite}
                 />

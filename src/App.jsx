@@ -10,16 +10,17 @@ import ThemeProvider from 'react-bootstrap/ThemeProvider';
 import { Header } from "./components/Header/Header";
 import { Shop } from "./components/Shop/Shop";
 import Footer from "./components/Footer/Footer";
-import Modal from "./components/Modal/Modal";
+
 
 function App() {
 
   const [goods, setGoods] = useState([]);
   const [loading, setLoading] = useState(false);
   const [order, setOrder] = useState([]);
-  const [showModal, setShowModal] = useState(false);
+  // const [showModalCart, setShowModalCart] = useState(false);
+  // const [showModalFavorite, setShowModalFavorite] = useState(false);
   const [favoritesCards, setFavoritesCards] = useState([]);
-  console.log(favoritesCards)
+  // console.log(favoritesCards)
   useEffect(() => {
     setLoading(true);
     api.getGoodsList()
@@ -34,11 +35,11 @@ function App() {
   }, []);
 
   const addToBasket = (item) => {
-    const itemIndex = order.findIndex(oderItem => oderItem.id === item.id);
+    let itemIndex = order.findIndex(oderItem => oderItem.id === item.id);
     if (itemIndex < 0) {
       const newItem = {
         ...item,
-        quantity: 1
+        cartCount: 1
       }
       setOrder([...order, newItem]);
     } else {
@@ -46,7 +47,7 @@ function App() {
         if (index === itemIndex) {
           return {
             ...orderItem,
-            quantity: orderItem.quantity + 1
+            cartCount: orderItem.cartCount + 1
           }
         } else {
           return orderItem;
@@ -55,7 +56,6 @@ function App() {
       setOrder(newOrder);
 
     }
-    // toast.success('Товар добавлен в корзину')
     toast('Товар добавлен в корзину',
       {
         icon: '🆕',
@@ -69,53 +69,60 @@ function App() {
   };
 
   const addToFavorite = (item) => {
-    const like = favoritesCards.some(favoritesItem => favoritesItem.like === item.id)
+    let like = favoritesCards.some(favoritesItem => favoritesItem.like === item.id)
     if (!like) {
       const newItem = {
         ...item,
         like: item.id
       }
       setFavoritesCards([...favoritesCards, newItem]);
-      toast("Товар добавлен в избранные",
-        {
-          icon: '❤️',
-          style: {
-            borderRadius: '20px',
-            background: '#ffffff',
-            color: '#000000',
-          },
-        }
-      );
+      // toast("Товар добавлен в избранные",
+      //   {
+      //     icon: '❤️',
+      //     style: {
+      //       borderRadius: '20px',
+      //       background: '#ffffff',
+      //       color: '#000000',
+      //     },
+      //   }
+      // );
     } else {
       setFavoritesCards(prevState => {
         return prevState.filter(prev => prev.like !== item.id)
       });
-      toast("Товар удален из избранных",
-        {
-          icon: '⛔',
-          style: {
-            borderRadius: '20px',
-            background: '#ffffff',
-            color: '#000000',
-          },
-        }
-      );
+      // toast("Товар удален из избранных",
+      //   {
+      //     icon: '⛔',
+      //     style: {
+      //       borderRadius: '20px',
+      //       background: '#ffffff',
+      //       color: '#000000',
+      //     },
+      //   }
+      // );
     }
   }
 
-  const haldleClickOpenModal = () => {
-    setShowModal(!showModal);
-  }
+  // const haldleClickOpenModalCart = () => {
+  //   setShowModalCart(true);
+  // }
 
+
+  // const haldleClickOpenModalFavorite = () => {
+  //   setShowModalFavorite(true);
+  // }
 
   return (
     <ThemeProvider
       breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
     >
-      <Header 
-      favoritesCards={favoritesCards}
-      order={order} 
-      haldleClickOpenModal={haldleClickOpenModal} 
+      <Header
+        order={order}
+        favoritesCards={favoritesCards}
+        // showModalCart={showModalCart}
+        // setShowModalCart={setShowModalCart}
+        // showModalFavorite={showModalFavorite}
+        // haldleClickOpenModalFavorite={haldleClickOpenModalFavorite}
       />
       <div className="content">
         <Shop
@@ -124,16 +131,12 @@ function App() {
           order={order}
           addToBasket={addToBasket}
           addToFavorite={addToFavorite}
+          favoritesCards={favoritesCards}
         />
       </div>
       <Footer />
       <Toaster />
-      <Modal
-        order={order}
-        showModal={showModal}
-        haldleClickOpenModal={haldleClickOpenModal}
-        title="Корзина"
-      />
+
     </ThemeProvider>
   );
 }
