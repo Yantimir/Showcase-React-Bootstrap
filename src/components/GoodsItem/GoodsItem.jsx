@@ -26,7 +26,8 @@ export const GoodsItem = (props) => {
                             id,
                             name,
                             price,
-                            icon
+                            icon,
+                            description
                         });
                     }}>
                         <FavoriteCard id={id} favoritesCards={favoritesCards}/>
@@ -48,7 +49,8 @@ export const GoodsItem = (props) => {
                                     id,
                                     name,
                                     price,
-                                    icon
+                                    icon,
+                                    description
                                 });
                             }}
                         >Купить

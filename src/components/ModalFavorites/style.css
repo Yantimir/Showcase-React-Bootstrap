@@ -1,0 +1,29 @@
+.modal {
+    pointer-events: all;
+}
+
+.modal-title h6{
+    font-size: 1.2rem;
+}
+.modal-body-name {
+    display: flex;
+    justify-content: space-between;
+}
+.modal-body-name h6 {
+    font-size: 0.9rem;
+    color: #464646;
+    margin-top: 2px;
+}
+.modal-error{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-error h5 {
+    margin: 15px 0 25px 0;
+    font-size: 1rem;
+    color: #464646;
+}
+
+

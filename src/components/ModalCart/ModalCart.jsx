@@ -3,17 +3,17 @@ import { Icon32ErrorCircle } from '@vkontakte/icons';
 import { Icon24DeleteOutline } from '@vkontakte/icons';
 import "./style.css";
 
-const _Modal = (props) => {
+export const ModalCart = (props) => {
 
     const {
-        order,
+        content,
         title,
         text,
         textButton,
         show,
         handleClick = Function.prototype
     } = props;
-// console.log(props)
+
     return (
         <Modal
             size="lg"
@@ -27,8 +27,8 @@ const _Modal = (props) => {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {order.length
-                    ? order.map(item => (
+                {content.length
+                    ? content.map(item => (
                         <div key={item.id}>
                             <div className="modal-body-name">
                                 <div style={{ display: "flex" }}>
@@ -51,10 +51,21 @@ const _Modal = (props) => {
                                         <h6 style={{ fontSize: "0.8rem", color: "#464646" }}>
                                             Количество: {item.cartCount}
                                         </h6>
+                                        <div>
+                                            количество
+                                        </div>
+
                                     </div>
                                 </div>
-
                                 <Icon24DeleteOutline width={20} height={20} fill="57bee6" />
+
+                                <Button
+                                    // size="sm"
+                                    style={{ fontWeight: "500", borderRadius: "10px", marginBottom: "15px" }}
+                                    variant="outline-secondary"
+                                    onClick={handleClick}
+                                >Купить
+                                </Button>
                             </div>
                             <hr />
                         </div>
@@ -76,4 +87,3 @@ const _Modal = (props) => {
         </Modal >
     )
 }
-export default _Modal;
