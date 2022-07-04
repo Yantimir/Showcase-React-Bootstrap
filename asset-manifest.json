@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Showcase-React-Bootstrap/static/css/main.e246633f.css",
+    "main.css": "/Showcase-React-Bootstrap/static/css/main.ae30a1ad.css",
     "main.js": "/Showcase-React-Bootstrap/static/js/main.ad94cc49.js",
     "index.html": "/Showcase-React-Bootstrap/index.html",
-    "main.e246633f.css.map": "/Showcase-React-Bootstrap/static/css/main.e246633f.css.map",
+    "main.ae30a1ad.css.map": "/Showcase-React-Bootstrap/static/css/main.ae30a1ad.css.map",
     "main.ad94cc49.js.map": "/Showcase-React-Bootstrap/static/js/main.ad94cc49.js.map"
   },
   "entrypoints": [
-    "static/css/main.e246633f.css",
+    "static/css/main.ae30a1ad.css",
     "static/js/main.ad94cc49.js"
   ]
 }
