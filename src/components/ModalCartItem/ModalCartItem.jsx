@@ -1,7 +1,16 @@
 import { Icon24DeleteOutline } from '@vkontakte/icons';
 import "./style.css";
 
-export const ModalCartItem = ({ id, name, icon, price, cartCount, removeTobasket = Function.prototype }) => {
+export const ModalCartItem = ({
+  id,
+  name,
+  icon,
+  price,
+  cartCount,
+  removeTobasket = Function.prototype,
+  setIncrementOrder = Function.prototype,
+  setDecrementOrder = Function.prototype
+}) => {
 
   // const { name, icon, price, cartCount } = props
 
@@ -29,18 +38,18 @@ export const ModalCartItem = ({ id, name, icon, price, cartCount, removeTobasket
             </h6>
             <div className="btnWrap">
               <div className="btnLeft">
-                <button className="minus"> - </button>
-                <span className="amount">0</span>
-                <button className="plus"> + </button>
+                <button className="minus" onClick={() => setDecrementOrder(id)}> - </button>
+                <span className="amount">{cartCount}</span>
+                <button className="plus" onClick={() => setIncrementOrder(id)}> + </button>
               </div>
             </div>
           </div>
         </div>
-        <div style={{cursor: "pointer"}} onClick={() => removeTobasket(id)}>
+        <div style={{ cursor: "pointer" }} onClick={() => removeTobasket(id)}>
           <Icon24DeleteOutline width={20} height={20} fill="#57bee6" />
         </div>
       </div>
-      <hr style={{margin: "15px 0"}}/>
+      <hr style={{ margin: "15px 0" }} />
     </>
   )
 }

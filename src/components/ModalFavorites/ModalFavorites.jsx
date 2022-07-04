@@ -12,7 +12,7 @@ export const ModalFavorites = (props) => {
     textButton,
     show,
     handleClick = Function.prototype,
-    removeToFavirite = Function.prototype
+    removeToFavorite = Function.prototype
   } = props;
 
   // let isLike = favoritesCards.some(item => item.like === id);
@@ -58,7 +58,7 @@ export const ModalFavorites = (props) => {
                                         </h6> */}
                   </div>
                 </div>
-                <div onClick={() => removeToFavirite(item.like)} style={{cursor: "pointer"}}>
+                <div onClick={() => removeToFavorite(item.like)} style={{cursor: "pointer"}}>
                     <Icon24Like width={25} height={25} fill="#57bee6" /> 
                 </div>
               </div>

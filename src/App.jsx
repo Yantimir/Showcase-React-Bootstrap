@@ -89,9 +89,39 @@ function App() {
     }
   }
 
-  const removeToFavirite = (itemId) => {
+  const removeToFavorite = (itemId) => {
     let newFavoritesCards = favoritesCards.filter((item) => item.like !== itemId);
     setFavoritesCards(newFavoritesCards);
+  }
+
+  const setIncrementOrder = (itemId) => {
+    let newOrder = order.map(item => {
+      if (item.id === itemId) {
+        let newCartCount = item.cartCount + 1;
+        return {
+          ...item,
+          cartCount: newCartCount
+        }
+      } else {
+        return item;
+      }
+    });
+    setOrder(newOrder);
+  }
+
+  const setDecrementOrder = (itemId) => {
+    let newOrder = order.map(item => {
+      if (item.id === itemId) {
+        let newCartCount = item.cartCount - 1;
+        return {
+          ...item,
+          cartCount: newCartCount >= 0 ? newCartCount : 0
+        }
+      } else {
+        return item;
+      }
+    });
+    setOrder(newOrder);
   }
 
   return (
@@ -102,7 +132,9 @@ function App() {
         order={order}
         favoritesCards={favoritesCards}
         removeTobasket={removeTobasket}
-        removeToFavirite={removeToFavirite}
+        removeToFavorite={removeToFavorite}
+        setIncrementOrder={setIncrementOrder}
+        setDecrementOrder={setDecrementOrder}
       />
       <div className="content">
         <Shop

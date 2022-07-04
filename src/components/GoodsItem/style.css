@@ -37,13 +37,13 @@
     justify-content: space-between;
     align-items: center;
     color: #464646;
-    font-size: 14px;
+    font-size: 1rem;
 }
 
 .card-text {
     color: #747474;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 0.8rem;
 }
 
 .btn {

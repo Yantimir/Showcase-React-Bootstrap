@@ -11,7 +11,9 @@ export const Header = ({
     order = [], 
     favoritesCards, 
     removeTobasket = Function.prototype,
-    removeToFavirite = Function.prototype 
+    removeToFavorite = Function.prototype,
+    setIncrementOrder = Function.prototype,
+    setDecrementOrder = Function.prototype 
 }) => {
 
     const [showModalCart, setShowModalCart] = useState(false);
@@ -66,11 +68,13 @@ export const Header = ({
                 show={showModalCart}
                 handleClick={handleClickShowModalCart}
                 removeTobasket={removeTobasket}
+                setIncrementOrder={setIncrementOrder}
+                setDecrementOrder={setDecrementOrder}
             />
 
             <ModalFavorites
                 favoritesCards={favoritesCards}
-                removeToFavirite={removeToFavirite}
+                removeToFavorite={removeToFavorite}
                 show={showModalFavorite}
                 handleClick={haldleClickShowModalFavorite}
                 title="Избранное"
