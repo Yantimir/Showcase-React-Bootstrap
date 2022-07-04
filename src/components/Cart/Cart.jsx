@@ -10,7 +10,7 @@ export const Cart = (props) => {
     <>
       <div className="cart">
         <div className="cart__inner">
-          <Icon28ShoppingCartOutline width={30} height={30} fill="#57bee6" />
+          <Icon28ShoppingCartOutline width={32} height={32} fill="#57bee6" />
         </div>
         {cartCount
           ? <div className="cart__quantity">

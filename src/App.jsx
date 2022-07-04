@@ -67,6 +67,12 @@ function App() {
     );
   };
 
+  // удаление товара из корзины
+  const removeTobasket = (itemId) => {
+    let newOrder = order.filter(item => item.id !== itemId);
+    setOrder(newOrder);
+  }
+
   // постановка снятие лайка
   const addToFavorite = (item) => {
     let like = favoritesCards.some(favoritesItem => favoritesItem.like === item.id)
@@ -83,6 +89,11 @@ function App() {
     }
   }
 
+  const removeToFavirite = (itemId) => {
+    let newFavoritesCards = favoritesCards.filter((item) => item.like !== itemId);
+    setFavoritesCards(newFavoritesCards);
+  }
+
   return (
     <ThemeProvider
       breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
@@ -90,6 +101,8 @@ function App() {
       <Header
         order={order}
         favoritesCards={favoritesCards}
+        removeTobasket={removeTobasket}
+        removeToFavirite={removeToFavirite}
       />
       <div className="content">
         <Shop

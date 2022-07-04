@@ -3,7 +3,7 @@ import { Button, Modal } from "react-bootstrap";
 import { ModalCartItem } from "../ModalCartItem/ModalCartItem";
 import "./style.css";
 
-export const ModalCart = ({ order = [], show, handleClick = Function.prototype }) => {
+export const ModalCart = ({ order = [], show, handleClick = Function.prototype, removeTobasket = Function.prototype }) => {
 
   const totalPrice = order.reduce((sum, element) => {
     return sum + element.price * element.cartCount;
@@ -24,7 +24,7 @@ export const ModalCart = ({ order = [], show, handleClick = Function.prototype }
       <Modal.Body>
         {order?.length
           ? (
-            order.map(item => <ModalCartItem key={item.id} {...item} />)
+            order.map(item => <ModalCartItem key={item.id} {...item} removeTobasket={removeTobasket} />)
 
           ) : (
             <div className="modal-error">
@@ -44,7 +44,7 @@ export const ModalCart = ({ order = [], show, handleClick = Function.prototype }
       </Modal.Body>
       {
         order.length > 0
-        && <div style={{padding: "0 0 20px 20px"}}><h6>Общая стоимость: {totalPrice}₽</h6></div>
+        && <div style={{ padding: "0 0 20px 20px" }}><h6>Общая стоимость: {totalPrice}₽</h6></div>
       }
     </Modal >
   )

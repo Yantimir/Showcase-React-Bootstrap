@@ -1,7 +1,7 @@
 import { Icon24DeleteOutline } from '@vkontakte/icons';
 import "./style.css";
 
-export const ModalCartItem = ({ name, icon, price, cartCount }) => {
+export const ModalCartItem = ({ id, name, icon, price, cartCount, removeTobasket = Function.prototype }) => {
 
   // const { name, icon, price, cartCount } = props
 
@@ -36,7 +36,7 @@ export const ModalCartItem = ({ name, icon, price, cartCount }) => {
             </div>
           </div>
         </div>
-        <div style={{cursor: "pointer"}}>
+        <div style={{cursor: "pointer"}} onClick={() => removeTobasket(id)}>
           <Icon24DeleteOutline width={20} height={20} fill="#57bee6" />
         </div>
       </div>

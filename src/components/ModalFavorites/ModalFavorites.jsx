@@ -1,18 +1,22 @@
 import { Button, Modal } from "react-bootstrap";
-import { Icon32ErrorCircle } from '@vkontakte/icons';
+import { Icon24Like, Icon24LikeOutline, Icon32ErrorCircle } from '@vkontakte/icons';
 // import { Icon24DeleteOutline } from '@vkontakte/icons';
 import "./style.css";
 
 export const ModalFavorites = (props) => {
 
   const {
-    content,
+    favoritesCards,
     title,
     text,
     textButton,
     show,
-    handleClick = Function.prototype
+    handleClick = Function.prototype,
+    removeToFavirite = Function.prototype
   } = props;
+
+  // let isLike = favoritesCards.some(item => item.like === id);
+
 
   return (
     <Modal
@@ -27,8 +31,8 @@ export const ModalFavorites = (props) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {content.length
-          ? content.map(item => (
+        {favoritesCards.length
+          ? favoritesCards.map(item => (
             <div key={item.id}>
               <div className="modal-body-name">
                 <div style={{ display: "flex" }}>
@@ -54,7 +58,9 @@ export const ModalFavorites = (props) => {
                                         </h6> */}
                   </div>
                 </div>
-                {/* <Icon24DeleteOutline width={20} height={20} fill="57bee6" /> */}
+                <div onClick={() => removeToFavirite(item.like)} style={{cursor: "pointer"}}>
+                    <Icon24Like width={25} height={25} fill="#57bee6" /> 
+                </div>
               </div>
               <hr />
             </div>

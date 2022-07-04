@@ -7,7 +7,12 @@ import { Favorite } from "../Favorite/Favorite";
 import { ModalCart } from "../ModalCart/ModalCart";
 import { ModalFavorites } from "../ModalFavorites/ModalFavorites";
 
-export const Header = ({ order, favoritesCards }) => {
+export const Header = ({ 
+    order = [], 
+    favoritesCards, 
+    removeTobasket = Function.prototype,
+    removeToFavirite = Function.prototype 
+}) => {
 
     const [showModalCart, setShowModalCart] = useState(false);
     const [showModalFavorite, setShowModalFavorite] = useState(false);
@@ -32,7 +37,7 @@ export const Header = ({ order, favoritesCards }) => {
                     <Navbar.Brand href="#">
                         <div>
                             <Icon36MarketOutline />
-                            <div style={{padding: "0 0 0 10px"}}>SHOWCASE</div>
+                            <div style={{ padding: "0 0 0 10px" }}>SHOWCASE</div>
                         </div>
                     </Navbar.Brand>
                     <div className="container__inner">
@@ -60,10 +65,12 @@ export const Header = ({ order, favoritesCards }) => {
                 order={order}
                 show={showModalCart}
                 handleClick={handleClickShowModalCart}
+                removeTobasket={removeTobasket}
             />
 
             <ModalFavorites
-                content={favoritesCards}
+                favoritesCards={favoritesCards}
+                removeToFavirite={removeToFavirite}
                 show={showModalFavorite}
                 handleClick={haldleClickShowModalFavorite}
                 title="Избранное"
