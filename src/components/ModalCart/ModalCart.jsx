@@ -1,89 +1,51 @@
+import { Icon32ErrorCircle } from "@vkontakte/icons";
 import { Button, Modal } from "react-bootstrap";
-import { Icon32ErrorCircle } from '@vkontakte/icons';
-import { Icon24DeleteOutline } from '@vkontakte/icons';
+import { ModalCartItem } from "../ModalCartItem/ModalCartItem";
 import "./style.css";
 
-export const ModalCart = (props) => {
+export const ModalCart = ({ order = [], show, handleClick = Function.prototype }) => {
 
-    const {
-        content,
-        title,
-        text,
-        textButton,
-        show,
-        handleClick = Function.prototype
-    } = props;
+  const totalPrice = order.reduce((sum, element) => {
+    return sum + element.price * element.cartCount;
+  }, 0);
 
-    return (
-        <Modal
-            size="lg"
-            show={show}
-            onHide={handleClick}
-            aria-labelledby="example-modal-sizes-title-lg"
-        >
-            <Modal.Header closeButton>
-                <Modal.Title id="example-modal-sizes-title-lg">
-                    <h6>{title}</h6>
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                {content.length
-                    ? content.map(item => (
-                        <div key={item.id}>
-                            <div className="modal-body-name">
-                                <div style={{ display: "flex" }}>
-                                    <img
-                                        src={item.icon}
-                                        alt={item.name}
-                                        style={{
-                                            width: "100px",
-                                            height: "100px",
-                                            marginRight: "20px"
-                                        }}
-                                    />
-                                    <div>
-                                        <h6>
-                                            {item.name.toUpperCase()}
-                                        </h6>
-                                        <h6 style={{ fontWeight: "400", fontSize: "1rem", color: "#747474" }}>
-                                            Цена: {item.price} ₽
-                                        </h6>
-                                        <h6 style={{ fontSize: "0.8rem", color: "#464646" }}>
-                                            Количество: {item.cartCount}
-                                        </h6>
-                                        <div>
-                                            количество
-                                        </div>
+  return (
+    <Modal
+      size="lg"
+      show={show}
+      onHide={handleClick}
+      aria-labelledby="example-modal-sizes-title-lg"
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          <h6>Корзина</h6>
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        {order?.length
+          ? (
+            order.map(item => <ModalCartItem key={item.id} {...item} />)
 
-                                    </div>
-                                </div>
-                                <Icon24DeleteOutline width={20} height={20} fill="57bee6" />
-
-                                <Button
-                                    // size="sm"
-                                    style={{ fontWeight: "500", borderRadius: "10px", marginBottom: "15px" }}
-                                    variant="outline-secondary"
-                                    onClick={handleClick}
-                                >Купить
-                                </Button>
-                            </div>
-                            <hr />
-                        </div>
-                    ))
-                    : <div className="modal-error">
-                        <Icon32ErrorCircle width={30} height={30} fill="#57bee6" />
-                        <h5>
-                            {text}
-                        </h5>
-                        <Button
-                            style={{ fontWeight: "500", borderRadius: "10px", marginBottom: "15px" }}
-                            variant="outline-secondary"
-                            onClick={handleClick}
-                        >{textButton}
-                        </Button>
-                    </div>
-                }
-            </Modal.Body>
-        </Modal >
-    )
+          ) : (
+            <div className="modal-error">
+              <Icon32ErrorCircle width={30} height={30} fill="#57bee6" />
+              <h5>
+                Ваша корзина пуста
+              </h5>
+              <Button
+                style={{ fontWeight: "500", borderRadius: "10px", marginBottom: "15px" }}
+                variant="outline-secondary"
+                onClick={handleClick}
+              >Перейти в каталог
+              </Button>
+            </div>
+          )
+        }
+      </Modal.Body>
+      {
+        order.length > 0
+        && <div style={{padding: "0 0 20px 20px"}}><h6>Общая стоимость: {totalPrice}₽</h6></div>
+      }
+    </Modal >
+  )
 }

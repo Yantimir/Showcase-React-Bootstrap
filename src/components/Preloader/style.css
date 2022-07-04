@@ -1,10 +1,10 @@
 .wrapper-spinner{
 	position: absolute;
-	z-index: 20;
+	z-index: 500;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	top: 7.5%;
+	top: 15%;
 	left: 45%; 
 	
 }

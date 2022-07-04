@@ -53,7 +53,7 @@ export const GoodsItem = (props) => {
                                     description
                                 });
                             }}
-                        >Купить
+                        >В корзину
                         </Button>
                     </div>
                 </Card.Body>

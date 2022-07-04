@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Navbar, Container } from "react-bootstrap";
 import "./style.css";
-
+import { Icon36MarketOutline } from '@vkontakte/icons';
 import { Cart } from "../Cart/Cart";
 import { Favorite } from "../Favorite/Favorite";
 import { ModalCart } from "../ModalCart/ModalCart";
@@ -29,7 +29,12 @@ export const Header = ({ order, favoritesCards }) => {
                 sticky="top"
             >
                 <Container>
-                    <Navbar.Brand href="#"><div>Showcase</div></Navbar.Brand>
+                    <Navbar.Brand href="#">
+                        <div>
+                            <Icon36MarketOutline />
+                            <div style={{padding: "0 0 0 10px"}}>SHOWCASE</div>
+                        </div>
+                    </Navbar.Brand>
                     <div className="container__inner">
                         <div className="container__favorite"
                             onClick={() => setShowModalFavorite(!showModalFavorite)}
@@ -52,12 +57,9 @@ export const Header = ({ order, favoritesCards }) => {
             </Navbar>
 
             <ModalCart
-                content={order}
+                order={order}
                 show={showModalCart}
                 handleClick={handleClickShowModalCart}
-                title="Корзина"
-                text="Ваша корзина пуста"
-                textButton="Перейти в каталог"
             />
 
             <ModalFavorites
@@ -69,6 +71,5 @@ export const Header = ({ order, favoritesCards }) => {
                 textButton="Перейти в каталог"
             />
         </>
-
     )
 }

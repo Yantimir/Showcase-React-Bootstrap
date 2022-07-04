@@ -2,19 +2,20 @@
     cursor: pointer;
     position: relative;
 }
-
+/* .cart__inner{
+    margin-top: 2px;
+} */
 .cart__quantity h6{
     position: absolute;
     top: -6px;
     right: -12px;
 	padding: 2px 4px;
-	font-weight: 800;
 	font-size: 0.8rem;
 	line-height: 10px;
     border: 3px solid #212529;
 	border-radius: 20px;
     background-color: red;
-    font-weight: 500;
+    font-weight: 400;
     color: #ffffff;
 }
 

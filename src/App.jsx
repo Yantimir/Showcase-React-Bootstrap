@@ -18,7 +18,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [order, setOrder] = useState([]);
   const [favoritesCards, setFavoritesCards] = useState([]);
-  // console.log(favoritesCards)
+  // console.log(goods)
   useEffect(() => {
     setLoading(true);
     api.getGoodsList()
@@ -32,6 +32,7 @@ function App() {
     // eslint-disable-next-line
   }, []);
 
+  // добавление в корзину
   const addToBasket = (item) => {
     let itemIndex = order.findIndex(oderItem => oderItem.id === item.id);
     if (itemIndex < 0) {
@@ -66,6 +67,7 @@ function App() {
     );
   };
 
+  // постановка снятие лайка
   const addToFavorite = (item) => {
     let like = favoritesCards.some(favoritesItem => favoritesItem.like === item.id)
     if (!like) {
