@@ -17,50 +17,13 @@ function App() {
   const { setGoods } = useContext(ShopContext);
 
   useEffect(() => {
-    // setLoading(true);
     api.getGoodsList()
       .then((data) => {
-        setGoods(data.featured)
+        setGoods(data.featured);
       })
     .catch(err => console.log(err))
-    // .finally(() => {
-    //   setLoading(false);
-    // })
     //eslint-disable-next-line
   }, []);
-
-
-  // увеличение количества товара
-  // const setIncrementOrder = (itemId) => {
-  //   let newOrder = order.map(item => {
-  //     if (item.id === itemId) {
-  //       let newCartCount = item.cartCount + 1;
-  //       return {
-  //         ...item,
-  //         cartCount: newCartCount
-  //       }
-  //     } else {
-  //       return item;
-  //     }
-  //   });
-  //   setOrder(newOrder);
-  // }
-
-  // уменьшение количества товара
-  // const setDecrementOrder = (itemId) => {
-  //   let newOrder = order.map(item => {
-  //     if (item.id === itemId) {
-  //       let newCartCount = item.cartCount - 1;
-  //       return {
-  //         ...item,
-  //         cartCount: newCartCount >= 0 ? newCartCount : 0
-  //       }
-  //     } else {
-  //       return item;
-  //     }
-  //   });
-  //   setOrder(newOrder);
-  // }
 
   return (
     <ThemeProvider

@@ -30,9 +30,6 @@ export const ModalCartItem = ({
           />
           <div>
             <h6>{name.toUpperCase()}</h6>
-            {/* <h6 style={{ fontWeight: "400", fontSize: "0.8rem", color: "#747474" }}>
-                        Количество:
-                      </h6> */}
             <h6 style={{ fontWeight: "400", fontSize: "1rem", color: "#57bee6", marginBottom: "12px" }}>
               {price}₽ x {cartCount} = {price * cartCount}₽
             </h6>

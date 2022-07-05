@@ -5,9 +5,9 @@ import { Button, Modal } from "react-bootstrap";
 import { Icon24Like, Icon32ErrorCircle } from '@vkontakte/icons';
 import "./style.css";
 
-export const ModalFavorites = ({show, handleClick = Function.prototype}) => {
+export const ModalFavorites = ({ show, handleClick = Function.prototype }) => {
 
-  const { favoritesCards, removeFromFavorite } = useContext(ShopContext);
+  const { favoritesCards, addToBasket, removeFromFavorite } = useContext(ShopContext);
 
   return (
     <Modal
@@ -44,6 +44,16 @@ export const ModalFavorites = ({show, handleClick = Function.prototype}) => {
                     <h6 style={{ fontWeight: "400", fontSize: "1rem", color: "#747474" }}>
                       {item.description}
                     </h6>
+                    <h6>
+                      {item.price}₽
+                    </h6>
+                    <Button
+                      variant="outline-secondary"
+                      onClick={() => {
+                        addToBasket(item);
+                      }}
+                    >В корзину
+                    </Button>
                   </div>
                 </div>
                 <div onClick={() => removeFromFavorite(item.like)} style={{ cursor: "pointer" }}>

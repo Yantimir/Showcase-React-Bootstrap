@@ -33,7 +33,6 @@ export function reducer(state, action) {
         ...state,
         order: newOrder,
       }
-      // setAlertName(item.name);
       // toast('Товар добавлен в корзину',
       //   {
       //     icon: '🆕',
@@ -43,7 +42,8 @@ export function reducer(state, action) {
       //       color: '#000000',
       //     },
       //   }
-      // );
+      // )
+
     }
     case "REMOVE_FROM_BASKET":
       return {
