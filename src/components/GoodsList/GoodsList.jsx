@@ -1,12 +1,13 @@
+import {useContext} from "react";
+import {ShopContext} from "../../context/context";
+
 import { GoodsItem } from "../GoodsItem/GoodsItem";
 import { Container, Row } from "react-bootstrap";
 
-export const GoodsList = ({
-    goods,
-    favoritesCards,
-    addToBasket = Function.prototype,
-    addToFavorite = Function.prototype,
-}) => {
+
+export const GoodsList = () => {
+
+    const {goods = []} = useContext(ShopContext);
 
     return (
         <Container style={{
@@ -20,9 +21,6 @@ export const GoodsList = ({
                         <GoodsItem
                             key={item.id}
                             {...item}
-                            favoritesCards={favoritesCards}
-                            addToBasket={addToBasket}
-                            addToFavorite={addToFavorite}
                         />
                     ))}
                 </Row>

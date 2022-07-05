@@ -1,17 +1,15 @@
+import { useContext } from "react";
+import { ShopContext } from "../../context/context";
+
 import { Icon32ErrorCircle } from "@vkontakte/icons";
 import { Button, Modal } from "react-bootstrap";
+
 import { ModalCartItem } from "../ModalCartItem/ModalCartItem";
 import "./style.css";
 
-export const ModalCart = ({
-  order = [],
-  show,
-  handleClick = Function.prototype,
-  removeTobasket = Function.prototype,
-  setIncrementOrder = Function.prototype,
-  setDecrementOrder = Function.prototype
-}) => {
+export const ModalCart = ({ show, handleClick = Function.prototype }) => {
 
+  const { order } = useContext(ShopContext);
   const totalPrice = order.reduce((sum, element) => {
     return sum + element.price * element.cartCount;
   }, 0);
@@ -34,9 +32,6 @@ export const ModalCart = ({
             order.map(item => <ModalCartItem
               key={item.id}
               {...item}
-              removeTobasket={removeTobasket}
-              setIncrementOrder={setIncrementOrder}
-              setDecrementOrder={setDecrementOrder}
             />)
 
           ) : (
@@ -59,7 +54,7 @@ export const ModalCart = ({
         order.length > 0
         && <div style={{ padding: "0 0 20px 20px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <h6>Общая стоимость: {totalPrice}₽</h6>
-          <div style={{ padding: "0 20px 15px 10px"}}>
+          <div style={{ padding: "0 20px 15px 10px" }}>
             <Button
               disabled
               variant="outline-secondary"

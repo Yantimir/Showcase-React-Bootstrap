@@ -1,8 +1,13 @@
+import { useContext } from "react";
+import { ShopContext } from "../../context/context";
+
 import { Icon24LikeOutline } from '@vkontakte/icons';
 import { Icon24Like } from '@vkontakte/icons';
 
-export const FavoriteCard = ({ favoritesCards, id }) => {
 
+export const FavoriteCard = ({ id }) => {
+
+    const { favoritesCards } = useContext(ShopContext);
     let isLike = favoritesCards.some(item => item.like === id);
 
     return (

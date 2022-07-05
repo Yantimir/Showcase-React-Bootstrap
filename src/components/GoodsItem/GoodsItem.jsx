@@ -1,6 +1,10 @@
-import { Card, Button, Col } from 'react-bootstrap';
+import { useContext } from "react";
+import { ShopContext } from "../../context/context";
+
+import { Card, Button, Col } from "react-bootstrap";
 import "./style.css";
-import { FavoriteCard } from '../FavoriteCard/FavoriteCard';
+import { FavoriteCard } from "../FavoriteCard/FavoriteCard";
+
 
 export const GoodsItem = (props) => {
     const {
@@ -11,10 +15,9 @@ export const GoodsItem = (props) => {
         // full_background,
         icon,
         image,
-        addToBasket = Function.prototype,
-        addToFavorite = Function.prototype,
-        favoritesCards
     } = props;
+
+    const { addToFavorite, addToBasket } = useContext(ShopContext);
 
     return (
         <Col>
@@ -30,7 +33,7 @@ export const GoodsItem = (props) => {
                             description
                         });
                     }}>
-                        <FavoriteCard id={id} favoritesCards={favoritesCards}/>
+                        <FavoriteCard id={id} />
                     </div>
                     <Card.Title>
                         {name.toUpperCase()}

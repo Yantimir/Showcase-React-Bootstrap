@@ -1,7 +1,6 @@
 // import { Icon28FavoriteOutline } from '@vkontakte/icons';
 import { Icon24HealthOutline } from '@vkontakte/icons';
 import "./style.css";
-// import Modal from "../Modal/Modal";
 
 export const Favorite = (props) => {
 

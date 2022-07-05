@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { ShopContext } from "../../context/context";
+
 import { Icon24DeleteOutline } from '@vkontakte/icons';
 import "./style.css";
 
@@ -6,14 +9,11 @@ export const ModalCartItem = ({
   name,
   icon,
   price,
-  cartCount,
-  removeTobasket = Function.prototype,
-  setIncrementOrder = Function.prototype,
-  setDecrementOrder = Function.prototype
+  cartCount
 }) => {
 
-  // const { name, icon, price, cartCount } = props
-
+  const { removeFromBasket, setIncrementOrder, setDecrementOrder } = useContext(ShopContext);
+  
   return (
     <>
       <div className="modal-body-name">
@@ -38,14 +38,18 @@ export const ModalCartItem = ({
             </h6>
             <div className="btnWrap">
               <div className="btnLeft">
-                <button className="minus" onClick={() => setDecrementOrder(id)}> - </button>
+                <button className="minus"
+                onClick={() => setDecrementOrder(id)}
+                > - </button>
                 <span className="amount">{cartCount}</span>
-                <button className="plus" onClick={() => setIncrementOrder(id)}> + </button>
+                <button className="plus"
+                onClick={() => setIncrementOrder(id)}
+                > + </button>
               </div>
             </div>
           </div>
         </div>
-        <div style={{ cursor: "pointer" }} onClick={() => removeTobasket(id)}>
+        <div style={{ cursor: "pointer" }} onClick={() => removeFromBasket(id)}>
           <Icon24DeleteOutline width={20} height={20} fill="#57bee6" />
         </div>
       </div>

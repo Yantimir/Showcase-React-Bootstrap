@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ShopContext } from "../../context/context";
+
 import { Navbar, Container } from "react-bootstrap";
 import "./style.css";
 import { Icon36MarketOutline } from '@vkontakte/icons';
@@ -7,15 +9,13 @@ import { Favorite } from "../Favorite/Favorite";
 import { ModalCart } from "../ModalCart/ModalCart";
 import { ModalFavorites } from "../ModalFavorites/ModalFavorites";
 
+
 export const Header = ({
-  order = [],
-  favoritesCards,
-  removeTobasket = Function.prototype,
-  removeToFavorite = Function.prototype,
   setIncrementOrder = Function.prototype,
   setDecrementOrder = Function.prototype
 }) => {
 
+  const {order, favoritesCards} = useContext(ShopContext);
   const [showModalCart, setShowModalCart] = useState(false);
   const [showModalFavorite, setShowModalFavorite] = useState(false);
 
@@ -24,7 +24,7 @@ export const Header = ({
   }
 
   const haldleClickShowModalFavorite = () => {
-    setShowModalFavorite(!showModalFavorite)
+    setShowModalFavorite(!showModalFavorite);
   }
 
   return (
@@ -64,22 +64,15 @@ export const Header = ({
       </Navbar>
 
       <ModalCart
-        order={order}
         show={showModalCart}
         handleClick={handleClickShowModalCart}
-        removeTobasket={removeTobasket}
-        setIncrementOrder={setIncrementOrder}
-        setDecrementOrder={setDecrementOrder}
+        // setIncrementOrder={setIncrementOrder}
+        // setDecrementOrder={setDecrementOrder}
       />
 
       <ModalFavorites
-        favoritesCards={favoritesCards}
-        removeToFavorite={removeToFavorite}
         show={showModalFavorite}
         handleClick={haldleClickShowModalFavorite}
-        title="Избранное"
-        text="Список пуст"
-        textButton="Перейти в каталог"
       />
     </>
   )
