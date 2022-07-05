@@ -4,7 +4,7 @@ import { ModalCartItem } from "../ModalCartItem/ModalCartItem";
 import "./style.css";
 
 export const ModalCart = ({
-  order = [], 
+  order = [],
   show,
   handleClick = Function.prototype,
   removeTobasket = Function.prototype,
@@ -57,7 +57,16 @@ export const ModalCart = ({
       </Modal.Body>
       {
         order.length > 0
-        && <div style={{ padding: "0 0 20px 20px" }}><h6>Общая стоимость: {totalPrice}₽</h6></div>
+        && <div style={{ padding: "0 0 20px 20px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <h6>Общая стоимость: {totalPrice}₽</h6>
+          <div style={{ padding: "0 20px 15px 10px"}}>
+            <Button
+              disabled
+              variant="outline-secondary"
+            >Купить
+            </Button>
+          </div>
+        </div>
       }
     </Modal >
   )

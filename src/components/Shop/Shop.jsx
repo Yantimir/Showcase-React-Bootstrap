@@ -7,7 +7,7 @@ export const Shop = ({
     order,
     favoritesCards,
     addToBasket = Function.prototype,
-    addToFavorite = Function.prototype
+    addToFavorite = Function.prototype,
 }) => {
 
     return (

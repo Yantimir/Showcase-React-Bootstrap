@@ -1,6 +1,5 @@
 import { Button, Modal } from "react-bootstrap";
-import { Icon24Like, Icon24LikeOutline, Icon32ErrorCircle } from '@vkontakte/icons';
-// import { Icon24DeleteOutline } from '@vkontakte/icons';
+import { Icon24Like, Icon32ErrorCircle } from '@vkontakte/icons';
 import "./style.css";
 
 export const ModalFavorites = (props) => {
@@ -53,9 +52,6 @@ export const ModalFavorites = (props) => {
                     <h6 style={{ fontWeight: "400", fontSize: "1rem", color: "#747474" }}>
                       {item.description}
                     </h6>
-                    {/* <h6 style={{ fontSize: "0.8rem", color: "#464646" }}>
-                                            Количество: {item.cartCount}
-                                        </h6> */}
                   </div>
                 </div>
                 <div onClick={() => removeToFavorite(item.like)} style={{cursor: "pointer"}}>

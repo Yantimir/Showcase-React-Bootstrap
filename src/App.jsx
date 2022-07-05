@@ -11,14 +11,12 @@ import { Header } from "./components/Header/Header";
 import { Shop } from "./components/Shop/Shop";
 import Footer from "./components/Footer/Footer";
 
-
 function App() {
-
   const [goods, setGoods] = useState([]);
   const [loading, setLoading] = useState(false);
   const [order, setOrder] = useState([]);
   const [favoritesCards, setFavoritesCards] = useState([]);
-  // console.log(goods)
+
   useEffect(() => {
     setLoading(true);
     api.getGoodsList()
@@ -53,8 +51,8 @@ function App() {
         }
       });
       setOrder(newOrder);
-
     }
+    // setAlertName(item.name);
     toast('Товар добавлен в корзину',
       {
         icon: '🆕',
@@ -89,11 +87,13 @@ function App() {
     }
   }
 
+  // удаление из избранных
   const removeToFavorite = (itemId) => {
     let newFavoritesCards = favoritesCards.filter((item) => item.like !== itemId);
     setFavoritesCards(newFavoritesCards);
   }
 
+  // увеличение количества товара
   const setIncrementOrder = (itemId) => {
     let newOrder = order.map(item => {
       if (item.id === itemId) {
@@ -109,6 +109,7 @@ function App() {
     setOrder(newOrder);
   }
 
+  // уменьшение количества товара
   const setDecrementOrder = (itemId) => {
     let newOrder = order.map(item => {
       if (item.id === itemId) {
@@ -148,7 +149,6 @@ function App() {
       </div>
       <Footer />
       <Toaster />
-
     </ThemeProvider>
   );
 }

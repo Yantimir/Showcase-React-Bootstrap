@@ -1,12 +1,12 @@
 import { GoodsItem } from "../GoodsItem/GoodsItem";
 import { Container, Row } from "react-bootstrap";
 
-export const GoodsList = ({ 
-    goods, 
+export const GoodsList = ({
+    goods,
     favoritesCards,
     addToBasket = Function.prototype,
-    addToFavorite = Function.prototype
- }) => {
+    addToFavorite = Function.prototype,
+}) => {
 
     return (
         <Container style={{
@@ -15,7 +15,7 @@ export const GoodsList = ({
         }}
         >
             {goods.length
-                ? <Row  xxl={5} xl={4} lg={3} md={2} sm={2} xs={1} className="g-1">
+                ? <Row xxl={5} xl={4} lg={3} md={2} sm={2} xs={1} className="g-1">
                     {goods.map(item => (
                         <GoodsItem
                             key={item.id}

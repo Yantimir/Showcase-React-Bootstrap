@@ -2,9 +2,7 @@
     cursor: pointer;
     position: relative;
 }
-/* .cart__inner{
-    margin-top: 2px;
-} */
+
 .cart__quantity h6{
     position: absolute;
     top: -5px;
