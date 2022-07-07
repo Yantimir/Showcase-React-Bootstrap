@@ -21,9 +21,10 @@ function App() {
       .then((data) => {
         setGoods(data.featured);
       })
-    .catch(err => console.log(err))
+      .catch(err => console.log(err))
     //eslint-disable-next-line
   }, []);
+
 
   return (
     <ThemeProvider
@@ -34,7 +35,7 @@ function App() {
         <Shop />
       </div>
       <Footer />
-      <Toaster />
+      <Toaster /> 
     </ThemeProvider>
   );
 }

@@ -1,5 +1,6 @@
 import { createContext, useReducer } from "react";
 import { reducer } from "../reducer/reducer";
+import toast from "react-hot-toast";
 
 export const ShopContext = createContext();
 
@@ -37,9 +38,22 @@ export const ContextProvider = ({ children }) => {
   value.setIncrementOrder = (itemId) => {
     dispatch({ type: "SET_INCREMENT_ORDER", payload: { id: itemId } });
   }
-  
+
   value.setDecrementOrder = (itemId) => {
     dispatch({ type: "SET_DECREMENT_ORDER", payload: { id: itemId } });
+  }
+
+  value.alertAddToBasket = () => {
+    dispatch({
+      type: "ALERT_ADD_TO_BASKET", payload: toast('Товар добавлен в корзину', {
+          icon: '🆕',
+          style: {
+            borderRadius: '20px',
+            background: '#ffffff',
+            color: '#000000',
+          },
+        })
+    });
   }
   return (
     <ShopContext.Provider value={value}>

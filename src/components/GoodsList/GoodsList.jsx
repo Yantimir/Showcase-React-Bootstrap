@@ -1,13 +1,12 @@
-import {useContext} from "react";
-import {ShopContext} from "../../context/context";
+import { useContext } from "react";
+import { ShopContext } from "../../context/context";
 
 import { GoodsItem } from "../GoodsItem/GoodsItem";
 import { Container, Row } from "react-bootstrap";
 
-
 export const GoodsList = () => {
 
-    const {goods = []} = useContext(ShopContext);
+    const { goods = [] } = useContext(ShopContext);
 
     return (
         <Container style={{

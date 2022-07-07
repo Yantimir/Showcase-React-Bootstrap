@@ -1,5 +1,3 @@
-// import toast from "react-hot-toast";
-
 export function reducer(state, action) {
   switch (action.type) {
     case "SET_GOODS":
@@ -14,7 +12,7 @@ export function reducer(state, action) {
       if (itemIndex < 0) {
         const newItem = {
           ...action.payload,
-          cartCount: 1
+          cartCount: 1,
         }
         newOrder = [...state.order, newItem]
       } else {
@@ -22,7 +20,7 @@ export function reducer(state, action) {
           if (index === itemIndex) {
             return {
               ...orderItem,
-              cartCount: orderItem.cartCount + 1
+              cartCount: orderItem.cartCount + 1,
             }
           } else {
             return orderItem;
@@ -33,17 +31,6 @@ export function reducer(state, action) {
         ...state,
         order: newOrder,
       }
-      // toast('Товар добавлен в корзину',
-      //   {
-      //     icon: '🆕',
-      //     style: {
-      //       borderRadius: '20px',
-      //       background: '#ffffff',
-      //       color: '#000000',
-      //     },
-      //   }
-      // )
-
     }
     case "REMOVE_FROM_BASKET":
       return {
@@ -86,7 +73,7 @@ export function reducer(state, action) {
       });
       return {
         ...state,
-        order: newOrder
+        order: newOrder,
       }
     }
     case "SET_DECREMENT_ORDER": {

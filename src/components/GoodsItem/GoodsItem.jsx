@@ -5,7 +5,6 @@ import { Card, Button, Col } from "react-bootstrap";
 import "./style.css";
 import { FavoriteCard } from "../FavoriteCard/FavoriteCard";
 
-
 export const GoodsItem = (props) => {
     const {
         id,
@@ -17,8 +16,8 @@ export const GoodsItem = (props) => {
         image,
     } = props;
 
-    const { addToFavorite, addToBasket } = useContext(ShopContext);
-
+    const { addToFavorite, addToBasket, alertAddToBasket } = useContext(ShopContext);
+    
     return (
         <Col>
             <Card>
@@ -55,6 +54,7 @@ export const GoodsItem = (props) => {
                                     icon,
                                     description
                                 });
+                                alertAddToBasket();
                             }}
                         >В корзину
                         </Button>
