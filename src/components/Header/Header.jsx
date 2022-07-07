@@ -10,12 +10,9 @@ import { ModalCart } from "../ModalCart/ModalCart";
 import { ModalFavorites } from "../ModalFavorites/ModalFavorites";
 
 
-export const Header = ({
-  setIncrementOrder = Function.prototype,
-  setDecrementOrder = Function.prototype
-}) => {
+export const Header = () => {
 
-  const {order, favoritesCards} = useContext(ShopContext);
+  const { order, favoritesCards } = useContext(ShopContext);
   const [showModalCart, setShowModalCart] = useState(false);
   const [showModalFavorite, setShowModalFavorite] = useState(false);
 
@@ -36,7 +33,7 @@ export const Header = ({
         sticky="top"
       >
         <Container>
-          <Navbar.Brand href="#">
+          <Navbar.Brand href="https://github.com/Yantimir/Showcase-React-Bootstrap" target="_blank">
             <div>
               <Icon36MarketOutline />
               <div style={{ padding: "0 0 0 10px" }}>SHOWCASE</div>
@@ -66,8 +63,6 @@ export const Header = ({
       <ModalCart
         show={showModalCart}
         handleClick={handleClickShowModalCart}
-        // setIncrementOrder={setIncrementOrder}
-        // setDecrementOrder={setDecrementOrder}
       />
 
       <ModalFavorites
